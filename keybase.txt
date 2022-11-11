@@ -4,9 +4,9 @@ https://keybase.io/irmandos
 
 I hereby claim:
 
-  * I am an admin of https://bothahome.co.za
+  * I am an admin of https://www.bothahome.co.za
   * I am irmandos (https://keybase.io/irmandos) on keybase.
-  * I have a public key with fingerprint E480 E87E 8D5A AD71 F2EA  434A 8588 38C5 DEBB 0315
+  * I have a public key ASDr-7nE9rf5WCK0StnpXfiYgdpQE9KXQonnL7tUBcnoFAo
 
 To do so, I am signing this object:
 
@@ -14,71 +14,43 @@ To do so, I am signing this object:
   "body": {
     "key": {
       "eldest_kid": "01018b8cb6949d77182ba1928916aa368b070af121b529652f09402d4914864b566e0a",
-      "fingerprint": "e480e87e8d5aad71f2ea434a858838c5debb0315",
       "host": "keybase.io",
-      "key_id": "858838c5debb0315",
-      "kid": "01018b8cb6949d77182ba1928916aa368b070af121b529652f09402d4914864b566e0a",
+      "kid": "0120ebfbb9c4f6b7f95822b44ad9e95df89881da5013d2974289e72fbb5405c9e8140a",
       "uid": "c118c98da340dc37e93601132cef5a19",
       "username": "irmandos"
     },
     "merkle_root": {
-      "ctime": 1599810181,
-      "hash_meta": "53ca6e2052ed956aadd3f54472f6010e49dd51254b640fe2268cf076689e269d",
-      "seqno": 17533836
-    },
-    "revoke": {
-      "sig_ids": [
-        "97e599cbb6eb7f21c61515af2ce0c48173a81cbb0849d68345aa49e1513d36a90f"
-      ]
+      "ctime": 1668163443,
+      "hash": "e1fa56f71e10daae75de4d80afe3f64cb96c236af44b76022e3212aed03047fa6acbfd5fc4ff11a37685eefbe61526a641fb6a375090e970adc25a816ae4a156",
+      "hash_meta": "0f28fdbe819e28256317bf42bf9050599958da1c7fef4319cd273433a460afd1",
+      "seqno": 23532539
     },
     "service": {
-      "hostname": "bothahome.co.za",
+      "entropy": "FupKn01ptZKcMs1+eGPz311z",
+      "hostname": "www.bothahome.co.za",
       "protocol": "https:"
     },
     "type": "web_service_binding",
-    "version": 1
+    "version": 2
   },
-  "ctime": 1599810199,
-  "expire_in": 157680000,
-  "prev": "b1abc12ce5baa4c662affd88a053601298412a584d15a008583a76ab3c4c733b",
-  "seqno": 57,
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.1.0"
+  },
+  "ctime": 1668163456,
+  "expire_in": 504576000,
+  "prev": "012895ed1a4642ba8ff7f97349f936dfd2d16b1fd037eeea6c42ddcbf883cb54",
+  "seqno": 105,
   "tag": "signature"
 }
 
 which yields the signature:
 
------BEGIN PGP MESSAGE-----
-Version: Keybase OpenPGP v2.1.13
-Comment: https://keybase.io/crypto
-
-yMNMAnicrVNrbBRFHL9ybbUVgqiIrxK7MbHQ85jZ3dmdvdDSIH5qTS3FFC3eZWZ3
-trft3e25ty209SDG0EhUgpiDkFxMVWx5WCOBINoYW2iND2ykFAxYqg0QyRUh2JiG
-D63ONhgT40f3y2Z3fv/fa2aGFvl9xXnbX8fDE/3+pXnfnexo9UUaV+7tFKhttAuh
-TqGFzb9YzGApN9JiGUJIABBATLFOFU3WDFWFWKQEaiLWoEKIpGAKVEBMKEKKRE1B
-ogk0GYiGrEEZKzJFisIAEQKCaSWamJN0rITLaZmMAcMqwwYixFChKTIiSzLBCGMJ
-68hglAIJIj4YtVPeBDdHSYoFLZv/4x+ReXv/gf+ffbfO0+kQYl3DBpFkYOiSyjRJ
-ARBKos5MxHk9YIo5CRJnHG05cZIw7JSQDghx5rTEWMSxbdcrV3ctDwKRpmHPIuQB
-SSoaiTOX8Ekk6URhIkAiMzTEnRqGZCJZVkWT6wHGsxgIikimigxMJooK1k2gKgrW
-mKhoBveRYi8nbK6gIknCksItOKzNbmGeespq4r2lhFCjoKmMe9ApVRhVTRHqCkQQ
-EZMnArqMoSoRDPkywFxTwZLMN0rWGAdJhqQQDZjCS2lPzWmz9Hlyb6PuFEBtN0qi
-dpwFdTvY4dWYdGzX1u0YX4y6bjIV8rpx25MeejOjkTs8EWolDH5S+EQbc1KWneBJ
-OPJftWlaQGBbkpbDIpaHQKqCAX88HdbmGYCE6pBnQZTb1hVFJKZpYEwA8jZO1LAM
-RYKwbPDMAPBjJBFVIVTSZV2VJPpPj0jlPkkT5+TlJYjb6jAhfXJgPN+XV+wrLFjg
-XSFfcdG9f1+s+MqFvkOl2cmD+aC5dVnmyvKJ7vRM/9cYhz/YVrgKvjK465vB/cd+
-zIXt3rVdN/atbjj17sJMuANV/9K55fI1IAVe6JqZCri3Wkb7g1VS9qdQ2+CprZeE
-x0r7Hu3pKe/24+6Z/RW1h8yRb199+rO5Jfm5upLpqw11ve/dl7x6fMPN+t6G6mej
-kSPXtz2UGd0RC2Zi5zaM/eCffWb77lVnyh78VZ/cdfvnXK5heOhD2rT45u3aBaNP
-1N2d/rxyTXWuddEnFWOPm+XG2vSKibnduQfWLXt+0+myXGdBWcXhyp2vvTiORj7u
-O3Fs4q2C4Ypw4Zzff36pG3i7Pnj4Wljcc3FF8/LKG0Xg/ruGsj3PjW/0b718rqYm
-Oxved/yLP0uLMh8lRy6UZAeytflrLrgHrpd2nakrO+E/+v6Sr2qaJtYN0PJPd27K
-/TF1tKq7OX/9k1Ubd/yWfOr0l9OjRybpw5vHYiOx2BXznd/Pput73qzt891iZxcb
-By4aA6sPNk6V7El/H7LuaZ99ZPqN8+svRf8CQd2/og==
-=xsnN
------END PGP MESSAGE-----
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg6/u5xPa3+VgitErZ6V34mIHaUBPSl0KJ5y+7VAXJ6BQKp3BheWxvYWTESpcCacQgASiV7RpGQrqP9/lzSfk239LRax/QN+7qbELdy/iDy1TEIBSBNjTrdU937siPKfbmFY+K/wLxZ3CbRaRsspi3oK0yAgHCo3NpZ8RA62BA1FVrjSdQY5mj2Vs8d8SzZA6L0SjPFnTUT08C5vENwL5cgK3z+wCHSDiLsVDIqRy+p0IgXelI+k8RB0p2DahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIGhNV0InDbs7hZ0bjQetq5yIBWzN04TFCtAQpNcNxMjuo3RhZ80CAqd2ZXJzaW9uAQ==
 
 And finally, I am proving ownership of this host by posting or
 appending to this document.
 
 View my publicly-auditable identity here: https://keybase.io/irmandos
 
-==================================================================
+================================================================
