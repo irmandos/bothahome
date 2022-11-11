@@ -1,0 +1,84 @@
+==================================================================
+https://keybase.io/irmandos
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://bothahome.co.za
+  * I am irmandos (https://keybase.io/irmandos) on keybase.
+  * I have a public key with fingerprint E480 E87E 8D5A AD71 F2EA  434A 8588 38C5 DEBB 0315
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01018b8cb6949d77182ba1928916aa368b070af121b529652f09402d4914864b566e0a",
+      "fingerprint": "e480e87e8d5aad71f2ea434a858838c5debb0315",
+      "host": "keybase.io",
+      "key_id": "858838c5debb0315",
+      "kid": "01018b8cb6949d77182ba1928916aa368b070af121b529652f09402d4914864b566e0a",
+      "uid": "c118c98da340dc37e93601132cef5a19",
+      "username": "irmandos"
+    },
+    "merkle_root": {
+      "ctime": 1599810181,
+      "hash_meta": "53ca6e2052ed956aadd3f54472f6010e49dd51254b640fe2268cf076689e269d",
+      "seqno": 17533836
+    },
+    "revoke": {
+      "sig_ids": [
+        "97e599cbb6eb7f21c61515af2ce0c48173a81cbb0849d68345aa49e1513d36a90f"
+      ]
+    },
+    "service": {
+      "hostname": "bothahome.co.za",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1599810199,
+  "expire_in": 157680000,
+  "prev": "b1abc12ce5baa4c662affd88a053601298412a584d15a008583a76ab3c4c733b",
+  "seqno": 57,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMNMAnicrVNrbBRFHL9ybbUVgqiIrxK7MbHQ85jZ3dmdvdDSIH5qTS3FFC3eZWZ3
+trft3e25ty209SDG0EhUgpiDkFxMVWx5WCOBINoYW2iND2ykFAxYqg0QyRUh2JiG
+D63ONhgT40f3y2Z3fv/fa2aGFvl9xXnbX8fDE/3+pXnfnexo9UUaV+7tFKhttAuh
+TqGFzb9YzGApN9JiGUJIABBATLFOFU3WDFWFWKQEaiLWoEKIpGAKVEBMKEKKRE1B
+ogk0GYiGrEEZKzJFisIAEQKCaSWamJN0rITLaZmMAcMqwwYixFChKTIiSzLBCGMJ
+68hglAIJIj4YtVPeBDdHSYoFLZv/4x+ReXv/gf+ffbfO0+kQYl3DBpFkYOiSyjRJ
+ARBKos5MxHk9YIo5CRJnHG05cZIw7JSQDghx5rTEWMSxbdcrV3ctDwKRpmHPIuQB
+SSoaiTOX8Ekk6URhIkAiMzTEnRqGZCJZVkWT6wHGsxgIikimigxMJooK1k2gKgrW
+mKhoBveRYi8nbK6gIknCksItOKzNbmGeespq4r2lhFCjoKmMe9ApVRhVTRHqCkQQ
+EZMnArqMoSoRDPkywFxTwZLMN0rWGAdJhqQQDZjCS2lPzWmz9Hlyb6PuFEBtN0qi
+dpwFdTvY4dWYdGzX1u0YX4y6bjIV8rpx25MeejOjkTs8EWolDH5S+EQbc1KWneBJ
+OPJftWlaQGBbkpbDIpaHQKqCAX88HdbmGYCE6pBnQZTb1hVFJKZpYEwA8jZO1LAM
+RYKwbPDMAPBjJBFVIVTSZV2VJPpPj0jlPkkT5+TlJYjb6jAhfXJgPN+XV+wrLFjg
+XSFfcdG9f1+s+MqFvkOl2cmD+aC5dVnmyvKJ7vRM/9cYhz/YVrgKvjK465vB/cd+
+zIXt3rVdN/atbjj17sJMuANV/9K55fI1IAVe6JqZCri3Wkb7g1VS9qdQ2+CprZeE
+x0r7Hu3pKe/24+6Z/RW1h8yRb199+rO5Jfm5upLpqw11ve/dl7x6fMPN+t6G6mej
+kSPXtz2UGd0RC2Zi5zaM/eCffWb77lVnyh78VZ/cdfvnXK5heOhD2rT45u3aBaNP
+1N2d/rxyTXWuddEnFWOPm+XG2vSKibnduQfWLXt+0+myXGdBWcXhyp2vvTiORj7u
+O3Fs4q2C4Ypw4Zzff36pG3i7Pnj4Wljcc3FF8/LKG0Xg/ruGsj3PjW/0b718rqYm
+Oxved/yLP0uLMh8lRy6UZAeytflrLrgHrpd2nakrO+E/+v6Sr2qaJtYN0PJPd27K
+/TF1tKq7OX/9k1Ubd/yWfOr0l9OjRybpw5vHYiOx2BXznd/Pput73qzt891iZxcb
+By4aA6sPNk6V7El/H7LuaZ99ZPqN8+svRf8CQd2/og==
+=xsnN
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/irmandos
+
+==================================================================
