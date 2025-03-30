@@ -1,0 +1,101 @@
+name: Optimize Assets & Update HTML
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "assets/images/**"
+      - "assets/css/**"
+      - "assets/js/**"
+      - "index.html"
+  pull_request:
+    paths:
+      - "assets/images/**"
+      - "assets/css/**"
+      - "assets/js/**"
+      - "index.html"
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install sharp-cli cssnano-cli terser -g
+
+      - name: Generate Low & High-Quality WebP Images
+        run: |
+          mkdir -p optimized/images/low optimized/images/high
+          for file in assets/images/*.{jpg,jpeg,png}; do
+            base=$(basename "$file" | cut -f 1 -d '.')
+            sharp "$file" --resize 600 --toFormat webp -o optimized/images/low/"$base".webp
+            sharp "$file" --resize 1200 --toFormat webp -o optimized/images/high/"$base".webp
+          done
+
+      - name: Update HTML Image References
+        run: |
+          for file in assets/images/*.{jpg,jpeg,png}; do
+            base=$(basename "$file" | cut -f 1 -d '.')
+            sed -i "s|<img src=\"assets/images/$base\.[a-zA-Z]*\"|<picture><source srcset=\"assets/images/low/$base.webp\" type=\"image/webp\"><img src=\"assets/images/low/$base.webp\" data-src=\"assets/images/high/$base.webp\" class=\"lazyload\"></picture>|g" index.html
+          done
+
+      - name: Ensure Lazy Load JavaScript Exists
+        run: |
+          if ! grep -q "lazyload.js" index.html; then
+            sed -i '/<\/body>/i <script src="assets/js/lazyload.js"></script>' index.html
+          fi
+
+      - name: Optimize CSS
+        run: |
+          mkdir -p optimized/css
+          for file in assets/css/*.css; do
+            cssnano "$file" optimized/css/$(basename "$file")
+          done
+
+      - name: Optimize JavaScript
+        run: |
+          mkdir -p optimized/js
+          for file in assets/js/*.js; do
+            terser "$file" --compress --mangle --output optimized/js/$(basename "$file")
+          done
+
+      - name: Generate File Hashes
+        run: |
+          mkdir -p hashed/css hashed/js
+          for file in optimized/css/*.css optimized/js/*.js; do
+            hash=$(sha256sum "$file" | cut -d' ' -f1 | head -c 8)
+            mv "$file" "${file%.*}.$hash.${file##*.}"
+          done
+
+      - name: Update HTML References for CSS & JS
+        run: |
+          for file in hashed/css/*.css; do
+            css_file=$(basename "$file")
+            sed -i "s|assets/css/.*\.css|assets/css/$css_file|g" index.html
+          done
+          for file in hashed/js/*.js; do
+            js_file=$(basename "$file")
+            sed -i "s|assets/js/.*\.js|assets/js/$js_file|g" index.html
+          done
+
+      - name: Commit Optimized Assets
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'actions@github.com'
+          cp -r optimized/images/low/* assets/images/low/
+          cp -r optimized/images/high/* assets/images/high/
+          cp -r hashed/css/* assets/css/
+          cp -r hashed/js/* assets/js/
+          rm -rf optimized hashed
+          git add assets/images/low/ assets/images/high/ assets/css/ assets/js/ index.html
+          git commit -m "Optimize assets, update HTML references, and add lazyload script if missing" || echo "No changes to commit"
+          git push
