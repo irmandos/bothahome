@@ -24,18 +24,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Make sure to run npm install from the correct directory
-      - name: Ensure we are in the root directory
-        run: |
-          echo "Current working directory: $(pwd)"
-          ls -la
-
+      # Ensure correct directory and install dependencies
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
 
-      # If `package.json` exists, install dependencies
       - name: Install dependencies
         run: |
           if [ -f "package.json" ]; then
@@ -51,9 +45,9 @@ jobs:
           for file in assets/images/*.{jpg,jpeg,png}; do
             base=$(basename "$file" | cut -f 1 -d '.')
             # Generate low-quality WebP image (600px width)
-            npx sharp "$file" --resize 600 --webp -o optimized/images/low/"$base".webp
+            ./node_modules/.bin/sharp "$file" --resize 600 --webp -o optimized/images/low/"$base".webp
             # Generate high-quality WebP image (1200px width)
-            npx sharp "$file" --resize 1200 --webp -o optimized/images/high/"$base".webp
+            ./node_modules/.bin/sharp "$file" --resize 1200 --webp -o optimized/images/high/"$base".webp
           done
 
       - name: Update HTML Image References
