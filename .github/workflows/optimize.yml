@@ -30,7 +30,8 @@ jobs:
           node-version: "18"
 
       - name: Install dependencies
-        run: npm install sharp cssnano-cli terser -g
+        run: |
+          npm install # Installs dependencies including sharp
 
       - name: Generate Low & High-Quality WebP Images
         run: |
