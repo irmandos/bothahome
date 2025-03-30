@@ -30,15 +30,17 @@ jobs:
           node-version: "18"
 
       - name: Install dependencies
-        run: npm install sharp-cli cssnano-cli terser -g
+        run: npm install sharp cssnano-cli terser -g
 
       - name: Generate Low & High-Quality WebP Images
         run: |
           mkdir -p optimized/images/low optimized/images/high
           for file in assets/images/*.{jpg,jpeg,png}; do
             base=$(basename "$file" | cut -f 1 -d '.')
-            sharp "$file" --resize 600 --toFormat webp -o optimized/images/low/"$base".webp
-            sharp "$file" --resize 1200 --toFormat webp -o optimized/images/high/"$base".webp
+            # Generate low-quality WebP image (600px width)
+            npx sharp "$file" --resize 600 --webp -o optimized/images/low/"$base".webp
+            # Generate high-quality WebP image (1200px width)
+            npx sharp "$file" --resize 1200 --webp -o optimized/images/high/"$base".webp
           done
 
       - name: Update HTML Image References
