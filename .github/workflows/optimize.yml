@@ -24,14 +24,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Make sure to run npm install from the correct directory
+      - name: Ensure we are in the root directory
+        run: |
+          echo "Current working directory: $(pwd)"
+          ls -la
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
 
+      # If `package.json` exists, install dependencies
       - name: Install dependencies
         run: |
-          npm install # Installs dependencies including sharp
+          if [ -f "package.json" ]; then
+            npm install
+          else
+            echo "package.json not found. Please check your repository structure."
+            exit 1
+          fi
 
       - name: Generate Low & High-Quality WebP Images
         run: |

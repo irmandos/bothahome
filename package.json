@@ -1,0 +1,25 @@
+{
+  "name": "bothahome",
+  "version": "1.0.0",
+  "description": "Files for bothahome.co.za site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irmandos/bothahome.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irmandos/bothahome/issues"
+  },
+  "homepage": "https://github.com/irmandos/bothahome#readme",
+  "dependencies": {
+    "cssnano-cli": "^1.0.5",
+    "sharp": "^0.33.5",
+    "terser": "^5.39.0"
+  }
+}
