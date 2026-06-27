@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const CleanCSS = require('clean-css');
 const sharp = require('sharp');
+const Terser = require('terser');
 
 const srcDir = path.resolve(__dirname, 'src');
 const distDir = path.resolve(__dirname, 'dist');
@@ -66,12 +67,31 @@ async function build() {
     console.log(`Minified CSS: ${file}`);
   });
 
-  // 3.5 Copy JS files
+  // 3.5 Process JS files (minify)
   const jsSrcDir = path.join(srcDir, 'assets/js');
   const jsDistDir = path.join(distDir, 'assets/js');
   if (fs.existsSync(jsSrcDir)) {
-    copyDir(jsSrcDir, jsDistDir);
-    console.log('Copied JS files');
+    fs.mkdirSync(jsDistDir, { recursive: true });
+    const jsFiles = fs.readdirSync(jsSrcDir).filter(f => f.endsWith('.js'));
+    
+    for (let file of jsFiles) {
+      const srcPath = path.join(jsSrcDir, file);
+      const destPath = path.join(jsDistDir, file);
+      const jsContent = fs.readFileSync(srcPath, 'utf8');
+      
+      try {
+        const minified = await Terser.minify(jsContent);
+        if (minified.error) {
+          throw minified.error;
+        }
+        fs.writeFileSync(destPath, minified.code);
+        console.log(`Minified JS: ${file}`);
+      } catch (err) {
+        console.error(`JS Minify error in ${file}:`, err);
+        // Fallback: copy original if minify fails
+        fs.copyFileSync(srcPath, destPath);
+      }
+    }
   }
 
   // 4. Process images
