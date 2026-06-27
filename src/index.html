@@ -1,95 +1,150 @@
 <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <title>BothaHome | Home</title>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" type="text/css" href="assets/css/home.css" media="screen and (min-width: 431px)">
-            <link rel="stylesheet" type="text/css" href="assets/css/small.css" media="screen and (max-width: 430px)">
-            <link rel="stylesheet" type="text/css" href="assets/css/wide.css" media="screen and (min-width: 1500px)">
-            <link rel="icon" type="image/svg" href="logo/dynamic-icon.svg">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Raleway&display=swap" >
-        </head>
-        <body>
-        <!--WELCOME_SECTION-->
-            <section id="welcome" class="hero-section">
-                <div class="hero-content">
-                    <h1>WELCOME TO BOTHAHOME <span class="divider"></span></h1>
-                    <p class="welcome-text">Welcome to the BothaHome page, an online resume for the Botha family. If you would like to know more about us, just click on our name or profile picture. Clicking on Christelle or Elzaan will open their LinkedIn profiles on another tab, while clicking on Ricardo or Anuscke will direct you to their portfolio websites.</p>
-                    <p class="quote">"Families are like branches on a tree. We grow in different directions, yet our roots remain as one."</p>
-                </div>
-            </section>
+<html lang="en">
+    <head>
+        <title>BothaHome | Home</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Google Fonts Preconnections -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Raleway&display=swap">
+        
+        <link rel="icon" type="image/svg" href="logo/dynamic-icon.svg">
+        
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="assets/css/home.css" media="screen and (min-width: 431px)">
+        <link rel="stylesheet" type="text/css" href="assets/css/small.css" media="screen and (max-width: 430px)">
+        <link rel="stylesheet" type="text/css" href="assets/css/wide.css" media="screen and (min-width: 1500px)">
+    </head>
+    <body>
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+            <svg class="sun-icon" viewBox="0 0 24 24" width="22" height="22">
+                <path fill="currentColor" d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm-1.06-10.96a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="22" height="22">
+                <path fill="currentColor" d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-9 8.3-9.8.6-.1 1.2.3 1.3.9.1.6-.2 1.2-.8 1.4-3.4 1.1-5.8 4.3-5.8 7.9 0 4.4 3.6 8 8 8 3.6 0 6.8-2.4 7.9-5.8.2-.6.8-.9 1.4-.8.6.1 1 .7.9 1.3-.9 4.7-5.1 8.2-9.8 8.3z"/>
+            </svg>
+        </button>
 
-            <p class="sec_divider"></p>
+        <!--WELCOME_SECTION-->
+        <section id="welcome" class="hero-section">
+            <div class="hero-content reveal">
+                <h1>WELCOME TO BOTHAHOME <span class="divider"></span></h1>
+                <p class="welcome-text">Welcome to the BothaHome page, an online resume for the Botha family. If you would like to know more about us, just click on our name or profile picture. Clicking on Christelle or Elzaan will open their LinkedIn profiles on another tab, while clicking on Ricardo or Anuscke will direct you to their portfolio websites.</p>
+                <p class="quote">"Families are like branches on a tree. We grow in different directions, yet our roots remain as one."</p>
+            </div>
+        </section>
+
+        <p class="sec_divider"></p>
 
         <!--MEET_THE_BOTHAS-->
-            <section id="meet_us">
-                <!--<h1>MEET THE BOTHA'S</h1>-->
-                <div class="parent">
-                    <!-- Ricardo Botha -->
-                    <div class="child card">
-                        <div class="card-border"></div>
-                        <div class="card-content">
-                            <a href="https://www.linkedin.com/in/ricardobotha/" style="border: none;" target="_blank">
-                                <picture>
-                                    <source type="image/webp" srcset="assets/images/ricardo.webp">
-                                    <img class="img_r" src="assets/images/ricardo.jpg" alt="Ricardo Botha Image">
-                                </picture>
+        <section id="meet_us">
+            <div class="parent">
+                <!-- Ricardo Botha -->
+                <div class="child card reveal">
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <picture>
+                            <source type="image/webp" srcset="assets/images/ricardo.webp">
+                            <img class="img_r" src="assets/images/ricardo.jpg" alt="Ricardo Botha Image" width="224" height="224" loading="lazy">
+                        </picture>
+                        <h2 class="card-name">Ricardo Botha</h2>
+                        <span class="profile-tag">Solutions Architect</span>
+                        <p class="quote">- Make things as simple as possible, not any simpler -</p>
+                        <div class="card-actions">
+                            <a href="https://www.linkedin.com/in/ricardobotha/" class="action-btn" target="_blank" rel="noopener noreferrer" aria-label="Ricardo's LinkedIn">
+                                <svg class="social-icon" viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
                             </a>
-                            <h1 class="r"><a href="https://www.linkedin.com/in/ricardobotha/" target="_blank">Ricardo Botha</a></h1>
-                            <p class="quote quote_r">- Make things as simple as possible, not any simpler -</p>
-                        </div>
-                    </div>
-                    <!-- Elzaan Botha -->
-                    <div class="child card">
-                        <div class="card-border"></div>
-                        <div class="card-content">
-                            <a href="https://www.linkedin.com/in/elzaan-oosthuizen-botha-990830a4/" style="border: none;" target="_blank">
-                                <picture>
-                                    <source type="image/webp" srcset="assets/images/elzaan.webp">
-                                    <img class="img_e" src="assets/images/elzaan.jpg" alt="Elzaan Botha Image">
-                                </picture>
+                            <a href="https://irmandos.co.za" class="action-btn" target="_blank" rel="noopener noreferrer" aria-label="Ricardo's Portfolio">
+                                <svg class="social-icon" viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="currentColor" fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm-1.8 3.555a7.973 7.973 0 0 1 3.6 0 8.016 8.016 0 0 1 2.502 1.488 6.467 6.467 0 0 0-2.457-.696 5.86 5.86 0 0 0-3.69 0 6.47 6.47 0 0 0-2.457.696A8.016 8.016 0 0 1 10.2 5.555ZM6.246 8.544a6.009 6.009 0 0 1 4.542-.72 4.47 4.47 0 0 1 2.424 0 6.009 6.009 0 0 1 4.542.72 8.006 8.006 0 0 1 1.05 4.316h-13.6a8.006 8.006 0 0 1 1.042-4.316Zm-.034 5.912h11.576a8.006 8.006 0 0 1-1.042 4.316 6.009 6.009 0 0 1-4.542.72 4.47 4.47 0 0 1-2.424 0 6.009 6.009 0 0 1-4.542-.72 8.006 8.006 0 0 1-1.026-4.316ZM12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/>
+                                </svg>
                             </a>
-                            <h1 class="e"><a href="https://www.linkedin.com/in/elzaan-oosthuizen-botha-990830a4/" target="_blank">Elzaan Botha</a></h1>
-                            <p class="quote quote_e">- Challenge your limits on day one, not one day -</p>
-                        </div>
-                    </div>
-                    <!-- Christelle Botha -->
-                    <div class="child card">
-                        <div class="card-border"></div>
-                        <div class="card-content">
-                            <a href="https://www.linkedin.com/in/christelle-botha-9a615b131/" style="border: none;" target="_blank">
-                                <picture>
-                                    <source type="image/webp" srcset="assets/images/christelle.webp">
-                                    <img class="img_c" src="assets/images/christelle.jpg" alt="Christelle Botha Image">
-                                </picture>
-                            </a>
-                            <h1 class="c"><a href="https://www.linkedin.com/in/christelle-botha-9a615b131/" target="_blank">Christelle Botha</a></h1>
-                            <p class="quote quote_c">- You only live once, if you do it right, once is enough -</p>
-                        </div>
-                    </div>
-                    <!-- Anuscke Botha -->
-                    <div class="child card">
-                        <div class="card-border"></div>
-                        <div class="card-content">
-                            <a href="https://anuscke.tech" style="border: none;" target="_blank">
-                                <picture>
-                                    <source type="image/webp" srcset="assets/images/anuscke.webp">
-                                    <img class="img_a" src="assets/images/anuscke.jpg" alt="Anuscke Botha Image">
-                                </picture>
-                            </a>
-                            <h1 class="a"><a href="https://anuscke.tech" target="_blank">Anuscke Botha</a></h1>
-                            <p class="quote quote_a">- I begin with an idea, then it turns into something else -</p>
                         </div>
                     </div>
                 </div>
-            </section>
-        <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "442c2c3a79034706a3019c80315dedc4"}'></script><!-- End Cloudflare Web Analytics -->
+                
+                <!-- Elzaan Botha -->
+                <div class="child card reveal">
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <picture>
+                            <source type="image/webp" srcset="assets/images/elzaan.webp">
+                            <img class="img_e" src="assets/images/elzaan.jpg" alt="Elzaan Botha Image" width="224" height="200" loading="lazy">
+                        </picture>
+                        <h2 class="card-name">Elzaan Botha</h2>
+                        <span class="profile-tag">Project Manager</span>
+                        <p class="quote">- Challenge your limits on day one, not one day -</p>
+                        <div class="card-actions">
+                            <a href="https://www.linkedin.com/in/elzaan-oosthuizen-botha-990830a4/" class="action-btn" target="_blank" rel="noopener noreferrer" aria-label="Elzaan's LinkedIn">
+                                <svg class="social-icon" viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Christelle Botha -->
+                <div class="child card reveal">
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <picture>
+                            <source type="image/webp" srcset="assets/images/christelle.webp">
+                            <img class="img_c" src="assets/images/christelle.jpg" alt="Christelle Botha Image" width="224" height="224" loading="lazy">
+                        </picture>
+                        <h2 class="card-name">Christelle Botha</h2>
+                        <span class="profile-tag">Business Specialist</span>
+                        <p class="quote">- You only live once, if you do it right, once is enough -</p>
+                        <div class="card-actions">
+                            <a href="https://www.linkedin.com/in/christelle-botha-9a615b131/" class="action-btn" target="_blank" rel="noopener noreferrer" aria-label="Christelle's LinkedIn">
+                                <svg class="social-icon" viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Anuscke Botha -->
+                <div class="child card reveal">
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <picture>
+                            <source type="image/webp" srcset="assets/images/anuscke.webp">
+                            <img class="img_a" src="assets/images/anuscke.jpg" alt="Anuscke Botha Image" width="224" height="200" loading="lazy">
+                        </picture>
+                        <h2 class="card-name">Anuscke Botha</h2>
+                        <span class="profile-tag">Branding Coach</span>
+                        <p class="quote">- I begin with an idea, then it turns into something else -</p>
+                        <div class="card-actions">
+                            <a href="https://anuscke.tech" class="action-btn" target="_blank" rel="noopener noreferrer" aria-label="Anuscke's Portfolio">
+                                <svg class="social-icon" viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="currentColor" fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm-1.8 3.555a7.973 7.973 0 0 1 3.6 0 8.016 8.016 0 0 1 2.502 1.488 6.467 6.467 0 0 0-2.457-.696 5.86 5.86 0 0 0-3.69 0 6.47 6.47 0 0 0-2.457.696A8.016 8.016 0 0 1 10.2 5.555ZM6.246 8.544a6.009 6.009 0 0 1 4.542-.72 4.47 4.47 0 0 1 2.424 0 6.009 6.009 0 0 1 4.542.72 8.006 8.006 0 0 1 1.05 4.316h-13.6a8.006 8.006 0 0 1 1.042-4.316Zm-.034 5.912h11.576a8.006 8.006 0 0 1-1.042 4.316 6.009 6.009 0 0 1-4.542.72 4.47 4.47 0 0 1-2.424 0 6.009 6.009 0 0 1-4.542-.72 8.006 8.006 0 0 1-1.026-4.316ZM12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Cloudflare Web Analytics -->
+        <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "442c2c3a79034706a3019c80315dedc4"}'></script>
+        <!-- End Cloudflare Web Analytics -->
+        
         <!--FOOTER-->
         <footer>
             <span>copyright © 2025 | Designed by <a href="https://anuscke.tech">anuscke.tech</a></span>
         </footer>
+        
+        <!-- Scripts -->
+        <script src="assets/js/theme.js"></script>
+        <script src="assets/js/reveal.js"></script>
         <script src="assets/js/cards.js"></script>
-</body>
-    </html>
+    </body>
+</html>
