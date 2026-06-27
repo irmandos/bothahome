@@ -316,7 +316,7 @@ section#meet_us .parent .card.revealed {
 
 @media (hover: hover) {
     section#meet_us .parent .card:hover {
-        transition: var(--theme-transition), box-shadow 0.25s ease;
+        transition: var(--theme-transition), box-shadow 0.25s ease !important;
     }
 }
 

@@ -378,7 +378,7 @@ section#meet_us .parent .card p.quote {
     
     section#meet_us .parent .card:hover {
         box-shadow: var(--card-hover-shadow);
-        transition: var(--theme-transition), box-shadow 0.25s ease; /* disable transform transition on hover for instant JS response */
+        transition: var(--theme-transition), box-shadow 0.25s ease !important; /* disable transform transition on hover for instant JS response */
     }
 
     section#meet_us .parent .card:hover img {
@@ -405,11 +405,11 @@ section#meet_us .parent .card.revealed {
     transition: var(--theme-transition), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease;
 }
 
-/* Card staggered entry delays */
-section#meet_us .parent .card:nth-child(1) { transition-delay: 0.05s; }
-section#meet_us .parent .card:nth-child(2) { transition-delay: 0.15s; }
-section#meet_us .parent .card:nth-child(3) { transition-delay: 0.25s; }
-section#meet_us .parent .card:nth-child(4) { transition-delay: 0.35s; }
+/* Card staggered entry delays (only active during initial scroll-reveal entry) */
+section#meet_us .parent .card:not(.revealed):nth-child(1) { transition-delay: 0.05s; }
+section#meet_us .parent .card:not(.revealed):nth-child(2) { transition-delay: 0.15s; }
+section#meet_us .parent .card:not(.revealed):nth-child(3) { transition-delay: 0.25s; }
+section#meet_us .parent .card:not(.revealed):nth-child(4) { transition-delay: 0.35s; }
 
 
 /*__FOOTER__STYLE_RULES__*/
