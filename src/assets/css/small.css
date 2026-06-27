@@ -32,18 +32,18 @@ section#welcome {
     text-align: center;
     min-height: 350px;
     width: 100%;
-    background-image: linear-gradient(rgba(25, 25, 25, 0.7), rgba(25, 25, 25, 0.8)), url('../images/botha_welcome2.webp');
+    background-image: linear-gradient(rgba(25, 25, 25, 0.7), rgba(25, 25, 25, 0.8)), url('../images/botha_welcome1.webp');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     border-bottom: 3px solid #c87137ff;
     box-sizing: border-box;
     padding: 2em 1.5em;
 }
 
-@supports not (background-image: url('../images/botha_welcome2.webp')) {
+@supports not (background-image: url('../images/botha_welcome1.webp')) {
     section#welcome {
-        background-image: linear-gradient(rgba(25, 25, 25, 0.7), rgba(25, 25, 25, 0.8)), url('../images/botha_welcome2.png');
+        background-image: linear-gradient(rgba(25, 25, 25, 0.7), rgba(25, 25, 25, 0.8)), url('../images/botha_welcome1.jpg');
     }
 }
 
