@@ -75,10 +75,13 @@ p {
 }
 
 .sec_divider {
-    width: 90%;
-    background: var(--sec-divider-bg);
-    height: 3px;
-    margin: 1.5em auto;  
+    width: 80%;
+    height: 4px;
+    margin: 2.5em auto;
+    background: radial-gradient(ellipse at center, var(--sec-divider-bg) 0%, rgba(200, 113, 55, 0.6) 40%, transparent 100%);
+    filter: drop-shadow(0 0 3px rgba(200, 113, 55, 0.4));
+    border-radius: 50%;
+    border: none;
     transition: var(--theme-transition);
 }
 
