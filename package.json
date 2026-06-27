@@ -2,9 +2,10 @@
   "name": "bothahome",
   "version": "1.0.0",
   "description": "Files for bothahome.co.za site",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "lite-server --baseDir=src",
+    "test": "vitest run",
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,12 @@
     "url": "https://github.com/irmandos/bothahome/issues"
   },
   "homepage": "https://github.com/irmandos/bothahome#readme",
-  "dependencies": {
-    "cssnano-cli": "^1.0.5",
-    "sharp": "^0.33.5",
-    "terser": "^5.39.0"
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "jsdom": "^29.1.1",
+    "lite-server": "^2.6.1",
+    "sharp": "^0.35.2",
+    "terser": "^5.48.0",
+    "vitest": "^4.1.9"
   }
 }
