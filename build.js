@@ -66,6 +66,14 @@ async function build() {
     console.log(`Minified CSS: ${file}`);
   });
 
+  // 3.5 Copy JS files
+  const jsSrcDir = path.join(srcDir, 'assets/js');
+  const jsDistDir = path.join(distDir, 'assets/js');
+  if (fs.existsSync(jsSrcDir)) {
+    copyDir(jsSrcDir, jsDistDir);
+    console.log('Copied JS files');
+  }
+
   // 4. Process images
   const imageSrcDir = path.join(srcDir, 'assets/images');
   const imageDistDir = path.join(distDir, 'assets/images');

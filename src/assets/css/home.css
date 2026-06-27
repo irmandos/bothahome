@@ -23,85 +23,214 @@ p {
 section#welcome_mobile {
     display: none;
 }
+
 section#welcome {
-    display: flex;
-    height: 25em;
-    overflow: hidden;
-    border-bottom: 3px solid #c87137ff;
-}
-
-section#welcome h1, section#welcome p {
- color:  white;
-} 
-
-section#welcome .parent_img img {
-    width: 25.5em;
-}
-
-section#welcome .parent_text{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70%;
-    height: 25.3em;
-    background: #191919ff;
-    padding-left: 2em;
-    padding-right: 3em;
+    text-align: center;
+    min-height: 450px;
+    width: 100%;
+    background-image: linear-gradient(rgba(25, 25, 25, 0.65), rgba(25, 25, 25, 0.75)), url('../images/botha_welcome1.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 4px solid #c87137ff;
+    box-sizing: border-box;
+    padding: 3em 2em;
 }
 
-section#welcome .parent_text .child_text .divider {
-    width: 10em;
-    background:  #c87137ff;
-    height: 3px;
+@supports not (background-image: url('../images/botha_welcome1.webp')) {
+    section#welcome {
+        background-image: linear-gradient(rgba(25, 25, 25, 0.65), rgba(25, 25, 25, 0.75)), url('../images/botha_welcome1.jpg');
+    }
+}
+
+section#welcome .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2em;
+}
+
+section#welcome h1 {
+    font-size: 2.8em;
+    color: #ffffff;
     margin: 0;
-    margin-top: .3em;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 2px;
+}
+
+section#welcome .divider {
+    display: block;
+    width: 6em;
+    background: #c87137ff;
+    height: 3px;
+    margin: 0.4em auto 0 auto;
+}
+
+section#welcome p.welcome-text {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.15em;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+}
+
+section#welcome p.quote {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.1em;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 3px solid #c87137ff;
+    padding-left: 1em;
+    margin: 0.5em 0 0 0;
+    max-width: 600px;
+    text-align: left;
 }
 
 /*___MEET_US_SECTION_STYLE_RULES___*/
 section#meet_us {
-    padding: 1em 4em;
+    padding: 2em 4em;
 }
 
 section#meet_us .parent {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 1.5em;
 }
 
-section#meet_us .parent .child {
-    margin-bottom: 1em;
+section#meet_us .parent .card {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid rgba(25, 25, 25, 0.08);
+    border-radius: 16px;
+    padding: 1.5em;
     text-align: center;
-    width: 16em;
+    width: 17em;
+    margin-bottom: 1em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease;
+    will-change: transform;
+    overflow: hidden;
 }
 
-section#meet_us .parent .child img {
-    width: 15em;
-    filter: grayscale(70%);
-    transition: transform 300ms, filter 300ms;
+/* Mouse Glow Background Effect */
+section#meet_us .parent .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: radial-gradient(
+        350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+        rgba(200, 113, 55, 0.06),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
 }
 
-section#meet_us .parent .child img:hover {
-    transform: scale(1.1);
-    filter: contrast(100%);
+/* Mouse Glow Border Effect */
+section#meet_us .parent .card .card-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 2;
+    background: radial-gradient(
+        350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+        rgba(200, 113, 55, 0.45),
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    padding: 2px; /* border thickness */
 }
 
-section#meet_us .parent .child img.img_a, section#meet_us .parent .child img.img_e {
-    height: 13em;
+/* Card Content container */
+section#meet_us .parent .card .card-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
-section#meet_us .parent .child a {
+section#meet_us .parent .card img {
+    width: 14em;
+    border-radius: 12px;
+    filter: grayscale(40%) contrast(95%);
+    transition: transform 400ms cubic-bezier(0.25, 1, 0.5, 1), filter 400ms ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+section#meet_us .parent .card img.img_a, section#meet_us .parent .card img.img_e {
+    height: 12.5em;
+    object-fit: cover;
+}
+
+section#meet_us .parent .card h1 {
+    margin: 0.8em 0 0.4em 0;
+    font-size: 1.6em;
+    line-height: 1.2;
+}
+
+section#meet_us .parent .card a {
     color: #191919ff;
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-section#meet_us .parent .child a:hover {
-    border-bottom: 2px solid #c87137ff;
-    color:black;
+section#meet_us .parent .card p.quote {
+    padding: 0 0.5em;
+    margin: 0;
+    font-size: 0.9em;
+    color: #555555;
+    font-style: italic;
+    line-height: 1.4;
 }
 
-section#meet_us .parent .child p.quote {
-    padding: 0;
-    margin: -.7em;
+@media (hover: hover) {
+    section#meet_us .parent .card:hover::before,
+    section#meet_us .parent .card:hover .card-border {
+        opacity: 1;
+    }
+    
+    section#meet_us .parent .card:hover {
+        box-shadow: 0 12px 30px rgba(200, 113, 55, 0.12), 0 4px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    section#meet_us .parent .card:hover img {
+        filter: grayscale(0%) contrast(100%);
+        transform: scale(1.03);
+    }
+    
+    section#meet_us .parent .card h1 a:hover {
+        color: #c87137ff;
+    }
 }
 
 /*__FOOTER__STYLE_RULES__*/
