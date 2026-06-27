@@ -140,7 +140,6 @@ section#welcome {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    border-bottom: 4px solid var(--divider-color);
     box-sizing: border-box;
     padding: 3em 2em;
 }
