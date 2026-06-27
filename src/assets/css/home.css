@@ -26,7 +26,7 @@
     --toggle-color: #191919;
     --toggle-hover-bg: rgba(25, 25, 25, 0.1);
     
-    --theme-transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    --theme-transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 body.dark-theme {
@@ -378,6 +378,7 @@ section#meet_us .parent .card p.quote {
     
     section#meet_us .parent .card:hover {
         box-shadow: var(--card-hover-shadow);
+        transition: var(--theme-transition), box-shadow 0.25s ease; /* disable transform transition on hover for instant JS response */
     }
 
     section#meet_us .parent .card:hover img {
@@ -397,6 +398,11 @@ section#meet_us .parent .card p.quote {
 .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Override reveal transition for cards after they are visible to enable smooth 3D tilt resets */
+section#meet_us .parent .card.revealed {
+    transition: var(--theme-transition), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease;
 }
 
 /* Card staggered entry delays */
