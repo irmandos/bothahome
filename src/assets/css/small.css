@@ -85,6 +85,12 @@ p {
     transition: var(--theme-transition);
 }
 
+/* Custom Keyboard Focus Outline */
+*:focus-visible {
+    outline: 2.5px solid var(--divider-color);
+    outline-offset: 4px;
+}
+
 /*___THEME_TOGGLE_BUTTON___*/
 .theme-toggle-btn {
     position: fixed;
@@ -335,6 +341,23 @@ section#meet_us .parent .card.revealed {
         filter: grayscale(0%) contrast(105%);
         transform: scale(1.08) rotate(1.5deg);
     }
+}
+
+/* Mirror premium effects on keyboard focus-within for accessibility */
+section#meet_us .parent .card:focus-within {
+    box-shadow: var(--card-hover-shadow);
+    border-color: var(--divider-color);
+    transform: scale(1.02) translateY(-8px);
+}
+
+section#meet_us .parent .card:focus-within .profile-img-wrapper {
+    border-color: var(--divider-color);
+    box-shadow: 0 0 15px rgba(200, 113, 55, 0.25);
+}
+
+section#meet_us .parent .card:focus-within .profile-img-wrapper img {
+    filter: grayscale(0%) contrast(105%);
+    transform: scale(1.08) rotate(1.5deg);
 }
 
 /*__FOOTER__STYLE_RULES__*/

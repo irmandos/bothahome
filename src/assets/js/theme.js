@@ -9,11 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const isDarkMode = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
 
-  // Set initial theme state
+  // Set initial theme state and aria-pressed attributes
   if (isDarkMode) {
     document.body.classList.add('dark-theme');
+    themeToggleBtn.setAttribute('aria-pressed', 'true');
   } else {
     document.body.classList.remove('dark-theme');
+    themeToggleBtn.setAttribute('aria-pressed', 'false');
   }
 
   // Toggle theme click listener
@@ -23,5 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Save selection to localStorage
     const currentTheme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
     localStorage.setItem('theme', currentTheme);
+    themeToggleBtn.setAttribute('aria-pressed', currentTheme === 'dark' ? 'true' : 'false');
   });
 });

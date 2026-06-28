@@ -79,6 +79,26 @@ describe('index.html structure and integrity', () => {
       expect(href.length).toBeGreaterThan(0);
     });
   });
+
+  it('should preload the welcome background image', () => {
+    const preload = document.querySelector('link[rel="preload"][as="image"]');
+    expect(preload).toBeDefined();
+    expect(preload.getAttribute('href')).toBe('assets/images/botha_welcome1.webp');
+    expect(preload.getAttribute('type')).toBe('image/webp');
+  });
+
+  it('should have aria-pressed initialized on theme-toggle', () => {
+    const toggle = document.getElementById('theme-toggle');
+    expect(toggle).toBeDefined();
+    expect(toggle.getAttribute('aria-pressed')).toBe('false');
+  });
+
+  it('should have keyboard accessibility rules in home.css', () => {
+    const cssPath = path.join(SRC_DIR, 'assets/css/home.css');
+    const cssContent = fs.readFileSync(cssPath, 'utf8');
+    expect(cssContent).toContain(':focus-within');
+    expect(cssContent).toContain(':focus-visible');
+  });
 });
 
 describe('policy pages structure', () => {
