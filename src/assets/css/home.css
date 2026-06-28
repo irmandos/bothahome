@@ -471,11 +471,103 @@ footer span {
 }
 
 footer a {
-    color: olive;
+    color: var(--divider-color);
     text-decoration: none;
     font-weight: bold;
+    transition: var(--theme-transition);
 }
 
 footer a:hover {
     text-decoration: underline;
+}
+
+footer .footer-divider {
+    color: var(--footer-text);
+    opacity: 0.5;
+    padding: 0 0.2em;
+}
+
+/*___POLICY_PAGE_STYLE_RULES___*/
+.policy-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.policy-container {
+    max-width: 800px;
+    width: 100%;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    padding: 3em;
+    box-shadow: var(--card-shadow);
+    margin: 2em 0 4em 0;
+    transition: var(--theme-transition);
+    box-sizing: border-box;
+    backdrop-filter: blur(12px);
+}
+
+.policy-container h1 {
+    font-size: 2.2em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid var(--divider-color);
+    padding-bottom: 0.3em;
+    font-family: "Oswald", sans-serif;
+    color: var(--text-color);
+}
+
+.policy-container h2 {
+    font-size: 1.5em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: var(--divider-color);
+    font-family: "Oswald", sans-serif;
+}
+
+.policy-container p, .policy-container ul, .policy-container li {
+    line-height: 1.6;
+    font-size: 0.95em;
+    margin-bottom: 1.2em;
+    font-family: "Raleway", sans-serif;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.policy-container a {
+    color: var(--divider-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.policy-container a:hover {
+    text-decoration: underline;
+}
+
+.back-btn {
+    align-self: flex-start;
+    background-color: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--btn-text);
+    padding: 0.6em 1.2em;
+    border-radius: 8px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    transition: var(--theme-transition);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.back-btn:hover {
+    background-color: var(--btn-hover-bg);
+    border-color: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
+    transform: translateY(-2px);
 }

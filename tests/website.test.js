@@ -80,6 +80,15 @@ describe('index.html structure and integrity', () => {
     });
   });
 
+  it('should contain privacy policy and terms links in the footer', () => {
+    const footer = document.querySelector('footer');
+    expect(footer).toBeDefined();
+    const privacyLink = footer.querySelector('a[href="privacy-policy.html"]');
+    const termsLink = footer.querySelector('a[href="terms-of-service.html"]');
+    expect(privacyLink).toBeDefined();
+    expect(termsLink).toBeDefined();
+  });
+
   it('should preload the welcome background image', () => {
     const preload = document.querySelector('link[rel="preload"][as="image"]');
     expect(preload).toBeDefined();
@@ -105,7 +114,7 @@ describe('policy pages structure', () => {
   const pages = ['privacy-policy.html', 'terms-of-service.html'];
 
   pages.forEach(page => {
-    it(`should have valid structure for ${page}`, () => {
+    it(`should have valid structure and theme elements for ${page}`, () => {
       const { dom } = loadHTML(page);
       const doc = dom.window.document;
 
@@ -119,6 +128,20 @@ describe('policy pages structure', () => {
       const title = doc.querySelector('title');
       expect(title).toBeDefined();
       expect(title.textContent.length).toBeGreaterThan(0);
+
+      // Check footer links presence
+      const footer = doc.querySelector('footer');
+      expect(footer).toBeDefined();
+      const privacyLink = footer.querySelector('a[href="privacy-policy.html"]');
+      const termsLink = footer.querySelector('a[href="terms-of-service.html"]');
+      expect(privacyLink).toBeDefined();
+      expect(termsLink).toBeDefined();
+
+      // Check theme toggle and back button
+      const toggle = doc.getElementById('theme-toggle');
+      expect(toggle).toBeDefined();
+      const backBtn = doc.querySelector('.back-btn[href="index.html"]');
+      expect(backBtn).toBeDefined();
     });
   });
 });
