@@ -48,7 +48,8 @@ npm run dev
 ```
 Once started, the site will be available at:
 - **Local URL**: [http://localhost:3000](http://localhost:3000)
-- **Browsersync UI**: [http://localhost:3001](http://localhost:3001)
+
+> Note: The dev server (`http-server`) is a static file server. For live-reload during development, manually refresh the browser after making changes. This service was swapped from `lite-server` to eliminate a deep dependency chain with 20+ high-severity vulnerabilities in `axios`.
 
 ### 🧪 3. Running Automated Tests
 We use **Vitest** and **JSDOM** to verify site standards and asset integrity before deployment.
