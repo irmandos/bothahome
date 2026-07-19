@@ -4,10 +4,14 @@ This is a static HTML/CSS/JS site deployed on GitHub Pages via GitHub Actions.
 
 ## graphify
 
-This project has a knowledge graph at graphify-out/ with 46 nodes, 42 edges, 14 communities.
+This project has a knowledge graph at graphify-out/ (gitignored — generated build artifact).
+
+**On fresh clone:** Run `graphify extract . --code-only --out . && graphify cluster-only .` to build the graph first. This is AST-only (free, no API key needed).
+
+**After graph exists:** For codebase questions, run `graphify query "<question>"` first. This returns a scoped subgraph at ~71x fewer tokens than raw file reading.
 
 Rules:
-- For codebase questions, run `graphify query "<question>"` first (from the project root). This returns a scoped subgraph at ~71x fewer tokens than raw file reading.
+- Run `graphify query "<question>"` before any file reading or grepping for code structure questions.
 - Use `graphify path "<A>" "<B>"` for relationships between two concepts.
 - Use `graphify explain "<concept>"` for focused explanations.
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review.
