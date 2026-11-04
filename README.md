@@ -32,7 +32,7 @@ The codebase is structured to separate source files, automated tests, build tool
 ## 🛠️ Local Development & Operations
 
 ### 📋 Prerequisites
-- **Node.js**: Version `18` or higher is required.
+- **Node.js**: Version `22` or higher is required (**jsdom 30 requires Node `^22.22.2`**; the CI runner also pins Node 22).
 - **npm**: Version `9` or higher.
 
 ### 📥 1. Installation
@@ -72,7 +72,23 @@ This runs the [build.js](build.js) compiler script, which:
 2. Minifies all CSS stylesheets in `src/assets/css/` to optimize load times.
 3. Automatically generates WebP versions of any new JPEG/PNG images using `sharp`.
 4. Copies all HTML pages, dynamic logo assets, and your `CNAME` domain configuration.
-5. Ignores the compiled `dist/` directory locally to keep the git history clean.
+5. **Cache-busts every CSS/JS asset** — each minified file is emitted with a content-hash filename (e.g. `theme.d5c799c31d.js`) and the HTML is rewritten to reference it. New content ⇒ new hash ⇒ new URL, so browsers can never serve a stale cached asset (GitHub Pages pins `max-age=600`).
+6. **Writes a build fingerprint** to `dist/version.json` (git commit short SHA, `buildTime`, content hash, `fingerprint`) and injects a `<meta name="build-version" content="…">` tag into every served HTML page.
+7. Ignores the compiled `dist/` directory locally to keep the git history clean.
+
+### 🔎 Verifying a deployment actually updated
+Because the CDN caches for 10 minutes, an easy way to confirm a deploy landed is to check the **build fingerprint** (it changes with every commit/content change):
+
+```bash
+# Machine-readable version manifest
+curl -s https://www.bothahome.co.za/version.json
+
+# Build-version meta tag embedded in the homepage HTML
+curl -s https://www.bothahome.co.za/ | grep -o 'build-version[^>]*'
+
+# Cache-busted asset name (changes when the JS content changes)
+curl -s https://www.bothahome.co.za/ | grep -o 'assets/js/theme\.[a-f0-9]*\.js'
+```
 
 ---
 

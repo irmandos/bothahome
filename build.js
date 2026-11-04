@@ -76,6 +76,45 @@ function copyDir(src, dest) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Cache busting (Option A): content-hash filenames.
+// Every minified CSS/JS is written as `name.<hash>.ext` where <hash> = sha1 of
+// its minified content. The built HTML is then rewritten so <link>/<script>
+// point at the hashed filename. New content => new hash => new URL => the
+// browser cannot serve a stale cached copy (GitHub Pages pins max-age=600).
+// ---------------------------------------------------------------------------
+const _hashedAssetRefs = []; // [{ fromFile, srcName }]
+
+function hashContent(buf) {
+  return crypto.createHash('sha1').update(buf).digest('hex').slice(0, 10);
+}
+
+// Write minified content to a hashed filename; record the src->hash rename.
+function writeHashed(assetDirDist, fileName, contentBuf) {
+  const ext = path.extname(fileName);
+  const base = path.basename(fileName, ext);
+  const hash = hashContent(contentBuf);
+  const hashedName = `${base}.${hash}${ext}`;
+  fs.writeFileSync(path.join(assetDirDist, hashedName), contentBuf);
+  return hashedName;
+}
+
+// After all assets are built, rewrite HTML so assets/css/x.css and
+// assets/js/x.js point at their hashed equivalents (cache-busting).
+function rehashHTMLReferences() {
+  const htmlFiles = ['index.html', 'privacy-policy.html', 'terms-of-service.html'];
+  for (const file of htmlFiles) {
+    const htmlPath = path.join(distDir, file);
+    if (!fs.existsSync(htmlPath)) continue;
+    let html = fs.readFileSync(htmlPath, 'utf8');
+    // Map each original css/js asset name to its hashed dist filename.
+    for (const ref of _hashedAssetRefs) {
+      html = html.split(ref.fromFile).join(ref.toFile);
+    }
+    fs.writeFileSync(htmlPath, html);
+  }
+}
+
 async function build() {
   console.log('Starting build...');
 
@@ -116,17 +155,18 @@ async function build() {
   const cleanCSS = new CleanCSS();
 
   cssFiles.forEach(file => {
-    const srcPath = path.join(cssSrcDir, file);
-    const destPath = path.join(cssDistDir, file);
-    const cssContent = fs.readFileSync(srcPath, 'utf8');
-    const minified = cleanCSS.minify(cssContent);
+      const srcPath = path.join(cssSrcDir, file);
+      const cssContent = fs.readFileSync(srcPath, 'utf8');
+      const minified = cleanCSS.minify(cssContent);
     
-    if (minified.errors.length) {
-      console.error(`CSS Minify errors in ${file}:`, minified.errors);
-    }
-    fs.writeFileSync(destPath, minified.styles);
-    console.log(`Minified CSS: ${file}`);
-  });
+      if (minified.errors.length) {
+        console.error(`CSS Minify errors in ${file}:`, minified.errors);
+      }
+      // Cache-busting: write with a content-hash filename
+      const hashedName = writeHashed(cssDistDir, file, Buffer.from(minified.styles, 'utf8'));
+      _hashedAssetRefs.push({ fromFile: `assets/css/${file}`, toFile: `assets/css/${hashedName}` });
+      console.log(`Minified CSS: ${file} -> ${hashedName}`);
+    });
 
   // 3.5 Process JS files (minify)
   const jsSrcDir = path.join(srcDir, 'assets/js');
@@ -136,22 +176,25 @@ async function build() {
     const jsFiles = fs.readdirSync(jsSrcDir).filter(f => f.endsWith('.js'));
     
     for (let file of jsFiles) {
-      const srcPath = path.join(jsSrcDir, file);
-      const destPath = path.join(jsDistDir, file);
-      const jsContent = fs.readFileSync(srcPath, 'utf8');
+          const srcPath = path.join(jsSrcDir, file);
+          const jsContent = fs.readFileSync(srcPath, 'utf8');
       
       try {
-        const minified = await Terser.minify(jsContent);
-        if (minified.error) {
-          throw minified.error;
-        }
-        fs.writeFileSync(destPath, minified.code);
-        console.log(`Minified JS: ${file}`);
-      } catch (err) {
-        console.error(`JS Minify error in ${file}:`, err);
-        // Fallback: copy original if minify fails
-        fs.copyFileSync(srcPath, destPath);
-      }
+              const minified = await Terser.minify(jsContent);
+              if (minified.error) {
+                throw minified.error;
+              }
+              // Cache-busting: write with a content-hash filename
+              const hashedName = writeHashed(jsDistDir, file, Buffer.from(minified.code, 'utf8'));
+              _hashedAssetRefs.push({ fromFile: `assets/js/${file}`, toFile: `assets/js/${hashedName}` });
+              console.log(`Minified JS: ${file} -> ${hashedName}`);
+            } catch (err) {
+              console.error(`JS Minify error in ${file}:`, err);
+              // Fallback: copy original if minify fails (still hash its name)
+              const buf = fs.readFileSync(srcPath);
+              const hashedName = writeHashed(jsDistDir, file, buf);
+              _hashedAssetRefs.push({ fromFile: `assets/js/${file}`, toFile: `assets/js/${hashedName}` });
+            }
     }
   }
 
@@ -181,13 +224,16 @@ async function build() {
         console.log(`Generated WebP: ${baseName}.webp`);
       }
     } else {
-      // Copy other assets (like WebP or SVG icons) directly
-      fs.copyFileSync(srcPath, destPath);
-    }
-  }
+          // Copy other assets (like WebP or SVG icons) directly
+          fs.copyFileSync(srcPath, destPath);
+        }
+      }
 
-  console.log('Build completed successfully!');
-}
+      // 5. Cache-busting: rewrite HTML so CSS/JS references point at hashed filenames
+      rehashHTMLReferences();
+
+      console.log('Build completed successfully!');
+    }
 
 build().catch(err => {
   console.error('Build failed:', err);
