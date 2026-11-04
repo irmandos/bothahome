@@ -1,11 +1,63 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+const { execSync } = require('child_process');
 const CleanCSS = require('clean-css');
 const sharp = require('sharp');
 const Terser = require('terser');
 
 const srcDir = path.resolve(__dirname, 'src');
 const distDir = path.resolve(__dirname, 'dist');
+
+// ---------------------------------------------------------------------------
+// Build fingerprint (versioning): lets you verify a deployment actually updated.
+// Produces dist/version.json + a <meta name="build-version"> injected into HTML.
+//   curl -s https://www.bothahome.co.za/version.json
+//   curl -s https://www.bothahome.co.za/ | grep -o 'build-version[^>]*'
+// A content hash of the built HTML/CSS/JS makes the marker change on ANY change.
+// ---------------------------------------------------------------------------
+function shortSha() {
+  try {
+    return execSync('git rev-parse --short HEAD', { cwd: __dirname })
+      .toString().trim();
+  } catch (_) {
+    return 'nogit';
+  }
+}
+
+function hashFile(filePath) {
+  if (!fs.existsSync(filePath)) return '';
+  return crypto.createHash('sha256').update(fs.readFileSync(filePath)).digest('hex').slice(0, 12);
+}
+
+function buildVersion() {
+  const sha = shortSha();
+  const ts = new Date().toISOString();
+  const roots = ['index.html', 'privacy-policy.html', 'terms-of-service.html'];
+  // content fingerprint of the pages (stable regardless of build timestamp)
+  const contentHash = roots
+    .map(f => hashFile(path.join(srcDir, f)))
+    .filter(Boolean)
+    .join(',');
+  return {
+    version: `${sha}`,
+    commit: sha,
+    buildTime: ts,
+    buildEpoch: Math.floor(Date.now() / 1000),
+    contentHash,
+    fingerprint: crypto.createHash('sha1')
+      .update(`${sha}|${contentHash}`).digest('hex').slice(0, 12),
+  };
+}
+
+function injectBuildMeta(htmlPath, version) {
+  const html = fs.readFileSync(htmlPath, 'utf8');
+  if (!html.includes('build-version')) {
+    const meta = `<meta name="build-version" content="${version.fingerprint} | ${version.commit} | ${version.buildTime}">`;
+    const updated = html.replace(/(<head\s*>)/i, `$1\n        ${meta}`);
+    fs.writeFileSync(htmlPath, updated);
+  }
+}
 
 // Helper to copy files recursively
 function copyDir(src, dest) {
@@ -33,12 +85,21 @@ async function build() {
   }
   fs.mkdirSync(distDir);
 
-  // 2. Copy CNAME, logos, and HTML files
+  // 1.5 Compute build version + write version.json (deployment verification handle)
+  const version = buildVersion();
+  fs.writeFileSync(path.join(distDir, 'version.json'), JSON.stringify(version, null, 2));
+  console.log(`Build version: ${version.fingerprint} (${version.commit} @ ${version.buildTime})`);
+
+  // 2. Copy CNAME, logos, and HTML files (+ inject build-version meta into pages)
   const rootFiles = ['index.html', 'privacy-policy.html', 'terms-of-service.html', 'CNAME'];
   rootFiles.forEach(file => {
     const srcPath = path.join(srcDir, file);
     if (fs.existsSync(srcPath)) {
-      fs.copyFileSync(srcPath, path.join(distDir, file));
+      const destPath = path.join(distDir, file);
+      fs.copyFileSync(srcPath, destPath);
+      if (file.endsWith('.html')) {
+        injectBuildMeta(destPath, version);
+      }
     }
   });
 
